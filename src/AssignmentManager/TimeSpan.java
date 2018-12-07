@@ -92,18 +92,26 @@ public class TimeSpan implements Comparable<TimeSpan> {
     }
 
     /**
+     * Description: Returns the length of time elapsed between the start and end
+     * times, in minutes.
      *
-     * @return
+     * @return minutes elapsed from start time to end time
      */
     public int calcSpanLength() {
+        int hourDiff, minuteDiff, elapsedTime;
 
-        return 0;
+        hourDiff = this.endHour - this.startHour;
+        minuteDiff = this.endMinute - this.startMinute;
+
+        elapsedTime = (60 * hourDiff) + minuteDiff;
+
+        return elapsedTime;
     }
-    
+
     public String startTimeString() {
         return null;
     }
-    
+
     public String endTimeString() {
         return null;
     }
@@ -115,10 +123,10 @@ public class TimeSpan implements Comparable<TimeSpan> {
     public int getStartHour() {
         return this.startHour;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public int getStartMinute() {
         return this.startMinute;
@@ -131,10 +139,10 @@ public class TimeSpan implements Comparable<TimeSpan> {
     public int getEndHour() {
         return this.endHour;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public int getEndMinute() {
         return this.endMinute;
@@ -160,10 +168,20 @@ public class TimeSpan implements Comparable<TimeSpan> {
     }
 
     /**
+     * Description: Unit tests for the TimeSpan class.
      *
-     * @param args
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
+        TimeSpan defaultSpan = new TimeSpan();
+        TimeSpan hoursSpan = new TimeSpan(-3, 50);
+        TimeSpan minutesSpan = new TimeSpan(13, -2, 16, 50);
+        
+        // print all spans
+        
+        System.out.println(defaultSpan.calcSpanLength());
+        System.out.println(hoursSpan.calcSpanLength());
+        System.out.println(minutesSpan.calcSpanLength());
 
     }
 
