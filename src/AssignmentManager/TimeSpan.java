@@ -95,25 +95,46 @@ public class TimeSpan implements Comparable<TimeSpan> {
      * Description: Returns the length of time elapsed between the start and end
      * times, in minutes.
      *
-     * @return minutes elapsed from start time to end time
+     * @return the number of minutes elapsed from start time to end time
      */
     public int calcSpanLength() {
         int hourDiff, minuteDiff, elapsedTime;
 
         hourDiff = this.endHour - this.startHour;
         minuteDiff = this.endMinute - this.startMinute;
-
         elapsedTime = (60 * hourDiff) + minuteDiff;
 
         return elapsedTime;
     }
 
+    /**
+     * Description: String representation of the start time in the form HH:MM.
+     * 
+     * @return a string representation of the start time
+     */
     public String startTimeString() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        
+        builder.append(String.format("%02d", this.startHour));
+        builder.append(":");
+        builder.append(String.format("%02d", this.startMinute));
+        
+        return builder.toString();
     }
 
+    /**
+     * Description: String representation of the end time in the form HH:MM.
+     * 
+     * @return a string representation of the end time
+     */
     public String endTimeString() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        
+        builder.append(String.format("%02d", this.endHour));
+        builder.append(":");
+        builder.append(String.format("%02d", this.endMinute));
+        
+        return builder.toString();
     }
 
     /**
@@ -159,12 +180,20 @@ public class TimeSpan implements Comparable<TimeSpan> {
     }
 
     /**
+     * Description: String representation of the TimeSpan object. The returned
+     * String is of the form HH:MM - HH:MM, representing start time to end time.
      *
-     * @return
+     * @return a string representation of the TimeSpan object
      */
     @Override
     public String toString() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        
+        builder.append(this.startTimeString());
+        builder.append(" - ");
+        builder.append(this.endTimeString());
+        
+        return builder.toString();
     }
 
     /**
@@ -177,7 +206,9 @@ public class TimeSpan implements Comparable<TimeSpan> {
         TimeSpan hoursSpan = new TimeSpan(-3, 50);
         TimeSpan minutesSpan = new TimeSpan(13, -2, 16, 50);
         
-        // print all spans
+        System.out.println(defaultSpan.toString());
+        System.out.println(hoursSpan.toString());
+        System.out.println(minutesSpan.toString());
         
         System.out.println(defaultSpan.calcSpanLength());
         System.out.println(hoursSpan.calcSpanLength());
