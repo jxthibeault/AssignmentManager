@@ -138,32 +138,36 @@ public class TimeSpan implements Comparable<TimeSpan> {
     }
 
     /**
-     *
-     * @return
+     * Description: Gets and returns the start hour.
+     * 
+     * @return the start hour of the span
      */
     public int getStartHour() {
         return this.startHour;
     }
 
     /**
-     *
-     * @return
+     * Description: Gets and returns the start minute.
+     * 
+     * @return the start minute of the span
      */
     public int getStartMinute() {
         return this.startMinute;
     }
 
     /**
-     *
-     * @return
+     * Description: Gets and returns the end hour.
+     * 
+     * @return the end hour of the span
      */
     public int getEndHour() {
         return this.endHour;
     }
 
     /**
-     *
-     * @return
+     * Description: Gets and returns the end minute.
+     * 
+     * @return the end minute of the span
      */
     public int getEndMinute() {
         return this.endMinute;
