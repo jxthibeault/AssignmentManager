@@ -60,13 +60,34 @@ public class Date implements Comparable<Date> {
     }
 
     /**
+     * Description: Compares this Date object with the specified Date object for
+     * order. Returns a negative integer, zero, or a positive integer as this
+     * Date is before, the same as, or after the specified Date.
      *
-     * @param that
-     * @return
+     * @param that Date to compare this Date to.
+     * @return negative integer, zero, or positive integer
      */
     @Override
     public int compareTo(Date that) {
-        return 0;
+        if (this.getYear() < that.getYear()) {
+            return -1;
+        } else if (this.getYear() > that.getYear()) {
+            return 1;
+        } else {
+            if (this.getMonth() < that.getMonth()) {
+                return -1;
+            } else if (this.getMonth() > that.getMonth()) {
+                return 1;
+            } else {
+                if (this.getDay() < that.getDay()) {
+                    return -1;
+                } else if (this.getDay() > that.getDay()) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        }
     }
 
     /**
@@ -88,14 +109,18 @@ public class Date implements Comparable<Date> {
 
     /**
      * Description: Unit tests for the Date class.
-     * 
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Date defaultDate = new Date();
         Date paramDate = new Date(3, 5, 2000);
-        
+
         System.out.println(defaultDate);
         System.out.println(paramDate);
+        
+        System.out.println(defaultDate.compareTo(paramDate));
+        System.out.println(paramDate.compareTo(defaultDate));
+        System.out.println(paramDate.compareTo(paramDate));
     }
 }
