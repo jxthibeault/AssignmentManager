@@ -6,13 +6,13 @@ package AssignmentManager;
  *
  * @author Josh Thibeault
  */
-public class TimeSpan implements Comparable<TimeSpan> {
+public final class TimeSpan implements Comparable<TimeSpan> {
 
-    private int startHour;
-    private int startMinute;
+    private final int startHour;
+    private final int startMinute;
 
-    private int endHour;
-    private int endMinute;
+    private final int endHour;
+    private final int endMinute;
 
     /**
      * Description: Default constructor for TimeSpan. The default start time for

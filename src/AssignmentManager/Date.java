@@ -5,11 +5,11 @@ package AssignmentManager;
  *
  * @author Josh Thibeault
  */
-public class Date implements Comparable<Date> {
+public final class Date implements Comparable<Date> {
 
-    private int month;
-    private int day;
-    private int year;
+    private final int month;
+    private final int day;
+    private final int year;
 
     /**
      * Description: Default constructor for Date. Default date is 01/01/1970.
