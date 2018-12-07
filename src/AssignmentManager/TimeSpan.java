@@ -184,6 +184,10 @@ public final class TimeSpan implements Comparable<TimeSpan> {
      */
     @Override
     public int compareTo(TimeSpan that) {
+        if(that == null) {
+            return 1;
+        }
+        
         if (this.getStartHour() < that.getStartHour()) {
             return -1;
         } else if (this.getStartHour() > that.getStartHour()) {
@@ -222,7 +226,7 @@ public final class TimeSpan implements Comparable<TimeSpan> {
         StringBuilder builder = new StringBuilder();
 
         builder.append(this.startTimeString());
-        builder.append(" - ");
+        builder.append("-");
         builder.append(this.endTimeString());
 
         return builder.toString();

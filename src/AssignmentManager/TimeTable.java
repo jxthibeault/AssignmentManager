@@ -92,23 +92,110 @@ public final class TimeTable {
      * @return
      */
     public String fullTimeTableString() {
-        return null;
+        return "Not yet implemented.";
     }
 
     /**
+     * Description: Generates and returns a string representation of this
+     * TimeTable. The returned string is of the basic form:
+     *    M TIME-TIME | T TIME-TIME | W TIME-TIME | R TIME-TIME | F TIME-TIME
+     * With a few exceptions. Days on which there is no scheduled time are
+     * omitted. Days with identical times are collapsed. In this example, there
+     * is no scheduled time for Thursday, Monday and Tuesday have the same
+     * scheduled time, and Wednesday and Friday have the same scheduled time:
+     *    MT TIME-TIME | WF TIME-TIME
+     * Note lastly that the pipe is omitted if there is only one block in the
+     * string, for example:
+     *    MTR TIME-TIME
      *
-     * @return
+     * @return a string representation of the TimeTable object
      */
     @Override
     public String toString() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+
+        if (this.monday == null && this.tuesday == null && this.wednesday == null
+                && this.thursday == null && this.friday == null) {
+            builder.append("No scheduled times in this time table.");
+        } else {
+            if (this.monday != null) {
+                builder.append("M");
+                if (this.monday.equals(this.tuesday)) {
+                    builder.append("T");
+                }
+                if (this.monday.equals(this.wednesday)) {
+                    builder.append("W");
+                }
+                if (this.monday.equals(this.thursday)) {
+                    builder.append("R");
+                }
+                if (this.monday.equals(this.friday)) {
+                    builder.append("F");
+                }
+                builder.append(" ").append(this.monday.toString()).append(" | ");
+            }
+            if (this.tuesday != null && !this.tuesday.equals(this.monday)) {
+                builder.append("T");
+                if (this.tuesday.equals(this.wednesday)) {
+                    builder.append("W");
+                }
+                if (this.tuesday.equals(this.thursday)) {
+                    builder.append("R");
+                }
+                if (this.tuesday.equals(this.friday)) {
+                    builder.append("F");
+                }
+                builder.append(" ").append(this.tuesday.toString()).append(" | ");
+            }
+            if (this.wednesday != null && !this.wednesday.equals(this.tuesday)
+                    && !this.wednesday.equals(this.monday)) {
+                builder.append("W");
+                if (this.wednesday.equals(this.thursday)) {
+                    builder.append("R");
+                }
+                if (this.wednesday.equals(this.friday)) {
+                    builder.append("F");
+                }
+                builder.append(" ").append(this.wednesday.toString()).append(" | ");
+            }
+            if (this.thursday != null && !this.thursday.equals(this.wednesday)
+                    && !this.thursday.equals(this.tuesday)
+                    && !this.thursday.equals(this.monday)) {
+                builder.append("R");
+                if (this.thursday.equals(this.friday)) {
+                    builder.append("F");
+                }
+                builder.append(" ").append(this.thursday.toString()).append(" | ");
+            }
+            if (this.friday != null && !this.friday.equals(this.thursday)
+                    && !this.friday.equals(this.wednesday)
+                    && !this.friday.equals(this.tuesday)
+                    && !this.friday.equals(this.monday)) {
+                builder.append("F");
+                builder.append(" ").append(this.friday.toString()).append(" | ");
+            }
+        }
+
+        builder.delete(builder.length() - 3, builder.length());
+
+        return builder.toString();
     }
 
     /**
+     * Description: Unit tests for the TimeTable class.
      *
-     * @param args
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
+        TimeSpan monday = new TimeSpan(9, 30, 10, 30);
+        TimeSpan tuesday = new TimeSpan(6, 30, 10, 30);
+        TimeSpan wednesday = new TimeSpan(9, 45, 10, 30);
+        TimeSpan thursday = new TimeSpan(6, 30, 10, 30);
+
+        TimeTable testTable = new TimeTable(null, tuesday, wednesday,
+                thursday, null);
+        
+        System.out.println(testTable.toString());
 
     }
 
