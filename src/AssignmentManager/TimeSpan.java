@@ -179,7 +179,7 @@ public final class TimeSpan implements Comparable<TimeSpan> {
      * as this TimeSpan is before, the same as, or after the specified TimeSpan
      * within an arbitrary 24-hour period.
      *
-     * @param that TimeSpan to compare this TimeSpan to.
+     * @param that the TimeSpan to compare this TimeSpan to
      * @return negative integer, zero, or positive integer
      */
     @Override
@@ -197,6 +197,18 @@ public final class TimeSpan implements Comparable<TimeSpan> {
                 return 0;
             }
         }
+    }
+    
+    /**
+     * Description: Checks if this TimeSpan object is equal to the specified
+     * TimeSpan object by comparing all properties of the two. The two objects
+     * are equal if, and only if, all of their properties are identical.
+     * 
+     * @param that the TimeSpan to compare this TimeSpan against
+     * @return true if this is equal to that, otherwise false
+     */
+    public boolean equals(TimeSpan that) {
+        return (this.compareTo(that) == 0);
     }
 
     /**

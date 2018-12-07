@@ -64,7 +64,7 @@ public final class Date implements Comparable<Date> {
      * order. Returns a negative integer, zero, or a positive integer as this
      * Date is before, the same as, or after the specified Date.
      *
-     * @param that Date to compare this Date to.
+     * @param that the Date to compare this Date to
      * @return negative integer, zero, or positive integer
      */
     @Override
