@@ -98,7 +98,7 @@ public final class TimeSpan implements Comparable<TimeSpan> {
      * @return the number of minutes elapsed from start time to end time
      */
     public int calcSpanLength() {
-        int hourDiff, minuteDiff, elapsedTime;
+        final int hourDiff, minuteDiff, elapsedTime;
 
         hourDiff = this.endHour - this.startHour;
         minuteDiff = this.endMinute - this.startMinute;

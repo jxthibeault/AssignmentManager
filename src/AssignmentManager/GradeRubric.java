@@ -14,18 +14,21 @@ public class GradeRubric {
     private TreeMap<String, Double> categories;
     
     /**
-     * 
+     * Description: Default constructor for GradeRubric. Initializes an empty
+     * TreeMap<String, Double> internally, containing no categories or weights.
      */
     public GradeRubric() {
-        
+        this.categories = new TreeMap<>();
     }
     
     /**
+     * Description: Constructor for GradeRubric accepting a pre-populated
+     * TreeMap<String, Double> containing categories and weights.
      * 
-     * @param categories 
+     * @param categories map with category names as keys and weights as values
      */
     public GradeRubric(TreeMap<String, Double> categories) {
-        
+        this.categories = categories;
     }
     
     /**
