@@ -7,8 +7,8 @@ package AssignmentManager;
  */
 public class Date implements Comparable<Date> {
 
-    private int day;
     private int month;
+    private int day;
     private int year;
 
     /**
@@ -26,9 +26,9 @@ public class Date implements Comparable<Date> {
      * @param month the month number
      * @param year the year number
      */
-    public Date(int day, int month, int year) {
-        this.day = day;
+    public Date(int month, int day, int year) {
         this.month = month;
+        this.day = day;
         this.year = year;
     }
 
@@ -70,19 +70,32 @@ public class Date implements Comparable<Date> {
     }
 
     /**
+     * Description: Builds and returns a String representation of the Date
+     * object. The returned String is of the form mm-dd-yyyy.
      *
-     * @return
+     * @return a String representation of the Date object
      */
     @Override
     public String toString() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(String.format("%02d", this.month)).append("-");
+        builder.append(String.format("%02d", this.day)).append("-");
+        builder.append(String.format("%04d", this.year));
+
+        return builder.toString();
     }
 
     /**
-     *
-     * @param args
+     * Description: Unit tests for the Date class.
+     * 
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        Date defaultDate = new Date();
+        Date paramDate = new Date(3, 5, 2000);
+        
+        System.out.println(defaultDate);
+        System.out.println(paramDate);
     }
 }
