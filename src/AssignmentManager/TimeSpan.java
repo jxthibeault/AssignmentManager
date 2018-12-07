@@ -109,37 +109,37 @@ public class TimeSpan implements Comparable<TimeSpan> {
 
     /**
      * Description: String representation of the start time in the form HH:MM.
-     * 
+     *
      * @return a string representation of the start time
      */
     public String startTimeString() {
         StringBuilder builder = new StringBuilder();
-        
+
         builder.append(String.format("%02d", this.startHour));
         builder.append(":");
         builder.append(String.format("%02d", this.startMinute));
-        
+
         return builder.toString();
     }
 
     /**
      * Description: String representation of the end time in the form HH:MM.
-     * 
+     *
      * @return a string representation of the end time
      */
     public String endTimeString() {
         StringBuilder builder = new StringBuilder();
-        
+
         builder.append(String.format("%02d", this.endHour));
         builder.append(":");
         builder.append(String.format("%02d", this.endMinute));
-        
+
         return builder.toString();
     }
 
     /**
      * Description: Gets and returns the start hour.
-     * 
+     *
      * @return the start hour of the span
      */
     public int getStartHour() {
@@ -148,7 +148,7 @@ public class TimeSpan implements Comparable<TimeSpan> {
 
     /**
      * Description: Gets and returns the start minute.
-     * 
+     *
      * @return the start minute of the span
      */
     public int getStartMinute() {
@@ -157,7 +157,7 @@ public class TimeSpan implements Comparable<TimeSpan> {
 
     /**
      * Description: Gets and returns the end hour.
-     * 
+     *
      * @return the end hour of the span
      */
     public int getEndHour() {
@@ -166,7 +166,7 @@ public class TimeSpan implements Comparable<TimeSpan> {
 
     /**
      * Description: Gets and returns the end minute.
-     * 
+     *
      * @return the end minute of the span
      */
     public int getEndMinute() {
@@ -174,13 +174,29 @@ public class TimeSpan implements Comparable<TimeSpan> {
     }
 
     /**
+     * Description: Compares this TimeSpan object with the specified TimeSpan
+     * object for order. Returns a negative integer, zero, or a positive integer
+     * as this TimeSpan is before, the same as, or after the specified TimeSpan
+     * within an arbitrary 24-hour period.
      *
-     * @param that
-     * @return
+     * @param that TimeSpan to compare this TimeSpan to.
+     * @return negative integer, zero, or positive integer
      */
     @Override
     public int compareTo(TimeSpan that) {
-        return 0;
+        if (this.getStartHour() < that.getStartHour()) {
+            return -1;
+        } else if (this.getStartHour() > that.getStartHour()) {
+            return 1;
+        } else {
+            if (this.getStartMinute() < that.getStartMinute()) {
+                return -1;
+            } else if (this.getStartMinute() > that.getStartMinute()) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
     }
 
     /**
@@ -192,11 +208,11 @@ public class TimeSpan implements Comparable<TimeSpan> {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        
+
         builder.append(this.startTimeString());
         builder.append(" - ");
         builder.append(this.endTimeString());
-        
+
         return builder.toString();
     }
 
@@ -209,15 +225,18 @@ public class TimeSpan implements Comparable<TimeSpan> {
         TimeSpan defaultSpan = new TimeSpan();
         TimeSpan hoursSpan = new TimeSpan(-3, 50);
         TimeSpan minutesSpan = new TimeSpan(13, -2, 16, 50);
-        
+
         System.out.println(defaultSpan.toString());
         System.out.println(hoursSpan.toString());
         System.out.println(minutesSpan.toString());
         
+        System.out.println(defaultSpan.compareTo(hoursSpan));
+        System.out.println(defaultSpan.compareTo(minutesSpan));
+        System.out.println(minutesSpan.compareTo(defaultSpan));
+
         System.out.println(defaultSpan.calcSpanLength());
         System.out.println(hoursSpan.calcSpanLength());
         System.out.println(minutesSpan.calcSpanLength());
-
     }
 
 }
