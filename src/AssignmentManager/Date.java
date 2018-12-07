@@ -33,27 +33,30 @@ public class Date implements Comparable<Date> {
     }
 
     /**
+     * Description: Gets and returns the Date's day field.
      *
-     * @return
+     * @return the day number
      */
     public int getDay() {
-        return 0;
+        return this.day;
     }
 
     /**
+     * Description: Gets and returns the Date's month field.
      *
-     * @return
+     * @return the month number
      */
     public int getMonth() {
-        return 0;
+        return this.month;
     }
 
     /**
+     * Description: Gets and returns the Date's year field.
      *
-     * @return
+     * @return the year number
      */
     public int getYear() {
-        return 0;
+        return this.year;
     }
 
     /**
