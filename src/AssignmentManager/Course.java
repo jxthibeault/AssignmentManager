@@ -11,7 +11,7 @@ import java.util.TreeMap;
  * @author Josh Thibeault
  */
 public class Course implements Comparable<Course> {
-    
+
     private final String courseCode;
     private final String title;
     private final String location;
@@ -19,30 +19,39 @@ public class Course implements Comparable<Course> {
     private final GradeRubric gradeRubric;
     private final TimeTable schedule;
     private final String additionalInfo;
-    
+
     private TreeMap<Integer, Assignment> assignments;
     private int absences;
-    
+
     /**
-     * 
-     * @param courseCode
-     * @param title 
+     * Description: Creates a Course object with a course code and title. Note
+     * that all information about the Course except for its assignments and
+     * absences is immutable once the constructor has been called.
+     *
+     * @param courseCode the course code for the course
+     * @param title the title of the course
      */
     public Course(String courseCode, String title) {
         this(courseCode, title, null, null, null, null, null, null, 0);
     }
-    
+
     /**
-     * 
-     * @param courseCode
-     * @param title
-     * @param location
-     * @param instructor
-     * @param assignments
-     * @param gradeRubric
-     * @param schedule
-     * @param additionalInfo
-     * @param absences 
+     * Description: Creates a Course object with a course code, title, location,
+     * instructor, set of assignments, grading rubric, schedule, additional
+     * information, and absences count. Note that course code, title, location,
+     * instructor, grading rubric, schedule, and additional information are
+     * immutable properties and cannot be modified once the constructor has been
+     * called.
+     *
+     * @param courseCode the course code for the course
+     * @param title the title of the course
+     * @param location the meeting location for classes
+     * @param instructor the instructor of the course
+     * @param assignments set of assignments for the course
+     * @param gradeRubric grading rubric used by the course
+     * @param schedule schedule of class times for the course
+     * @param additionalInfo additional information about the course
+     * @param absences count of absences for this course
      */
     public Course(String courseCode, String title, String location,
             Instructor instructor, TreeMap<Integer, Assignment> assignments,
@@ -58,118 +67,133 @@ public class Course implements Comparable<Course> {
         this.additionalInfo = additionalInfo;
         this.absences = absences;
     }
-    
+
     /**
-     * 
+     *
      * @param id
      * @param assignment
-     * @return 
+     * @return
      */
     public boolean addAssignment(Integer id, Assignment assignment) {
         return false;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public int addAbsence() {
         return 0;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Description: Gets and returns the assignment with the specified ID. If no
+     * assignment with the specified ID is found, a null reference is returned.
+     *
+     * @param assignmentID ID of the assignment to search for
+     * @return the assignment with the specified ID or a null reference
      */
-    public Assignment getAssignment() {
-        return null;
+    public Assignment getAssignment(int assignmentID) {
+        if (this.assignments.containsKey(assignmentID)) {
+            return this.assignments.get(assignmentID);
+        } else {
+            return null;
+        }
     }
-    
+
     /**
-     * 
-     * @return 
+     * Description: Gets and returns the course code of this course.
+     *
+     * @return course code of the course
      */
     public String getCourseCode() {
-        return null;
+        return this.courseCode;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Description: Gets and returns the title of this course.
+     *
+     * @return title of the course
      */
     public String getTitle() {
-        return null;
+        return this.title;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Description: Gets and returns the Instructor of this course.
+     *
+     * @return instructor of the course
      */
     public Instructor getInstructor() {
-        return null;
+        return this.instructor;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Description: Gets and returns the GradeRubric of this course.
+     *
+     * @return grade rubric of the course
      */
     public GradeRubric getGradeRubric() {
-        return null;
+        return this.gradeRubric;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Description: Gets and returns the meeting times of classes for this
+     * course.
+     *
+     * @return meeting times of classes for the course
      */
     public TimeTable getSchedule() {
-        return null;
+        return this.schedule;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Description: Gets and returns any additional information about this
+     * course.
+     *
+     * @return any additional information for the course
      */
     public String getAdditionalInfo() {
-        return null;
+        return this.additionalInfo;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Description: Gets and returns the number of accrued absences for this
+     * course.
+     *
+     * @return number of accrued absences for the course
      */
     public int getAbsences() {
-        return 0;
+        return this.absences;
     }
-    
+
     /**
-     * 
+     *
      * @param that
-     * @return 
+     * @return
      */
     @Override
     public int compareTo(Course that) {
         return 0;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        
-        
-        
+
         return builder.toString();
     }
-    
+
     /**
-     * 
-     * @param args 
+     *
+     * @param args
      */
     public static void main(String[] args) {
-        
+
     }
-    
+
 }
