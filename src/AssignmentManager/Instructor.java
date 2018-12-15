@@ -144,8 +144,9 @@ public final class Instructor implements Comparable<Instructor> {
     }
 
     /**
+     * Description: Unit tests for the Instructor class.
      *
-     * @param args
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
         
