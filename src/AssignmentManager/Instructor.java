@@ -122,12 +122,25 @@ public final class Instructor implements Comparable<Instructor> {
     }
 
     /**
-     *
-     * @return
+     * Description: Generates and returns a String representation of this
+     * Instructor object. The returned String contains the Instructor name,
+     * email, phone, and office hours as a block of information. The returned
+     * String consumes four lines of output.
+     * 
+     * @return a string representation of this Instructor object
      */
     @Override
     public String toString() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        
+        builder.append(this.name).append(System.lineSeparator());
+        builder.append("Email:        ").append(this.email);
+        builder.append(System.lineSeparator());
+        builder.append("Phone:        ").append(this.phone);
+        builder.append(System.lineSeparator());
+        builder.append("Office Hours: ").append(this.officeHours.toString());
+        
+        return builder.toString();
     }
 
     /**
@@ -144,6 +157,19 @@ public final class Instructor implements Comparable<Instructor> {
         System.out.println(testOne.compareTo(testTwo));
         System.out.println(testOne.compareTo(testThree));
         System.out.println(testOne.compareTo(testFour));
+        
+        TimeSpan monday = new TimeSpan(9, 30, 10, 30);
+        TimeSpan tuesday = new TimeSpan(6, 30, 10, 30);
+        TimeSpan wednesday = new TimeSpan(9, 45, 10, 30);
+        TimeSpan thursday = new TimeSpan(6, 30, 10, 30);
+
+        TimeTable testTable = new TimeTable(null, tuesday, wednesday,
+                thursday, null);
+        
+        Instructor testInstructor = new Instructor("Jane Doe",
+                "jdoe@smccme.edu", "207-123-4567", testTable);
+        
+        System.out.println(testInstructor);
 
     }
 
