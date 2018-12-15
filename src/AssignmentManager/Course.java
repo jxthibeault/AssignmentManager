@@ -191,21 +191,45 @@ public class Course implements Comparable<Course> {
     }
 
     /**
+     * Description: Generates and returns a String representation of this Course
+     * object. The returned String includes the course code, course title,
+     * meeting location and times, and instructor information. The returned
+     * String consumes three lines of output.
      *
-     * @return
+     * @return a string representation of this Course object
      */
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
 
+        builder.append(this.courseCode).append(": ").append(this.title);
+        builder.append(System.lineSeparator());
+        builder.append(this.location).append(", ").append(this.schedule);
+        builder.append(System.lineSeparator());
+        builder.append(this.additionalInfo);
+
         return builder.toString();
     }
 
     /**
+     * Description: Unit tests for the Course class.
      *
-     * @param args
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
+        TimeSpan monday = new TimeSpan(9, 30, 10, 30);
+        TimeSpan tuesday = new TimeSpan(6, 30, 10, 30);
+        TimeSpan wednesday = new TimeSpan(9, 45, 10, 30);
+        TimeSpan thursday = new TimeSpan(6, 30, 10, 30);
+
+        TimeTable testTable = new TimeTable(null, tuesday, wednesday,
+                thursday, null);
+
+        Course testCourse = new Course("ECON125", "Macroeconomics",
+                "Hague 201", null, null, null, testTable,
+                "No additional info", 0);
+        
+        System.out.println(testCourse);
 
     }
 
