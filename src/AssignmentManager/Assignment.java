@@ -106,9 +106,9 @@ public class Assignment implements Comparable<Assignment> {
     /**
      * Description: Compares this Assignment object with the specified
      * Assignment object for order. Returns a negative integer, zero, or a
-     * positive integer as this Assignment's ID is before, the same as, or
-     * after the specified Assignment's ID, based on natural numeric ordering.
-     * Leading zeroes, if any, are omitted from comparison.
+     * positive integer as this Assignment's ID is before, the same as, or after
+     * the specified Assignment's ID, based on natural numeric ordering. Leading
+     * zeroes, if any, are omitted from comparison.
      *
      * @param that the Assignment to compare this Assignment to
      * @return negative integer, zero, or positive integer
@@ -125,22 +125,38 @@ public class Assignment implements Comparable<Assignment> {
     }
 
     /**
+     * Description: Generates and returns a String representation of this
+     * Assignment object. The returned string contains the assignment name,
+     * its unique ID, its due date, and any associated or required reading.
+     * The returned string consumes three lines of output.
      *
-     * @return
+     * @return a string representation of this Assignment object
      */
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
+        String formatString = "%-10s%s";
+
+        builder.append(this.name).append("  (ID: ")
+                .append(String.format("%04d", this.assignmentID)).append(")");
+        builder.append(System.lineSeparator());
+        builder.append(String.format(formatString, "Due:", this.dueDate));
+        builder.append(System.lineSeparator());
+        builder.append(String.format(formatString, "Reading:", this.reading));
 
         return builder.toString();
     }
 
     /**
+     * Description: Unit tests for the Assignment class.
      *
-     * @param args
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        Date paramDate = new Date(3, 5, 2000);
+        Assignment testAssignment = new Assignment(3, "Test Assignment",
+                "Chapter 7, Pages 200-217", paramDate, "Homework", false);
+        System.out.println(testAssignment);
     }
 
 }
