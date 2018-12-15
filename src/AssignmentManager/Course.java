@@ -69,21 +69,34 @@ public class Course implements Comparable<Course> {
     }
 
     /**
+     * Description: Adds an assignment to this course's assignment library. If
+     * an assignment with the specified ID already exists in this course, then
+     * the method returns false. Otherwise, on success, the method returns true.
      *
-     * @param id
-     * @param assignment
-     * @return
+     * @param assignment assignment to add to this course
+     * @return true on success, false if assignment with the same ID already
+     * exists
      */
-    public boolean addAssignment(Integer id, Assignment assignment) {
-        return false;
+    public boolean addAssignment(Assignment assignment) {
+        int id = assignment.getAssignmentID();
+        if (this.assignments.containsKey(id)) {
+            return false;
+        } else {
+            this.assignments.put(id, assignment);
+            return true;
+        }
     }
 
     /**
+     * Description: Increments the number of accrued absences for this course by
+     * one, then returns the new absence count.
      *
-     * @return
+     * @return number of accrued absences for the course after incrementing the
+     * count by one
      */
     public int addAbsence() {
-        return 0;
+        this.absences++;
+        return this.absences;
     }
 
     /**
