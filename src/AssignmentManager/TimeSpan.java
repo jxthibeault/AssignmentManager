@@ -1,8 +1,8 @@
 package AssignmentManager;
 
 /**
- * Description: A class representing a span of time from a start hour to an end
- * hour.
+ * Description: A class representing a span of time from a start time to an end
+ * time. This class supports hours-only usage or hours-minutes usage.
  *
  * @author Josh Thibeault
  */

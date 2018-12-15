@@ -88,25 +88,83 @@ public final class TimeTable {
     }
 
     /**
+     * Description: Generates a returns a complete time table for the entire
+     * week, including days for which nothing is scheduled.
      *
-     * @return
+     * @return a complete table representing this TimeTable object
      */
     public String fullTimeTableString() {
-        return "Not yet implemented.";
+        StringBuilder builder = new StringBuilder();
+        String formatString = "%-12s%-7s%-7s";
+
+        builder.append(String.format(formatString, "Day", "Start", "End"));
+        builder.append(System.lineSeparator());
+        builder.append("--------------------------");
+        builder.append(System.lineSeparator());
+
+        if (this.monday == null) {
+            builder.append(String.format(formatString, "Monday",
+                    "Not scheduled", ""));
+        } else {
+            builder.append(String.format(formatString, "Monday",
+                    this.monday.startTimeString(),
+                    this.monday.endTimeString()));
+        }
+        builder.append(System.lineSeparator());
+
+        if (this.tuesday == null) {
+            builder.append(String.format(formatString, "Tuesday",
+                    "Not scheduled", ""));
+        } else {
+            builder.append(String.format(formatString, "Tuesday",
+                    this.tuesday.startTimeString(),
+                    this.tuesday.endTimeString()));
+        }
+        builder.append(System.lineSeparator());
+
+        if (this.wednesday == null) {
+            builder.append(String.format(formatString, "Wednesday",
+                    "Not scheduled", ""));
+        } else {
+            builder.append(String.format(formatString, "Wednesday",
+                    this.wednesday.startTimeString(),
+                    this.wednesday.endTimeString()));
+        }
+        builder.append(System.lineSeparator());
+
+        if (this.thursday == null) {
+            builder.append(String.format(formatString, "Thrusday",
+                    "Not scheduled", ""));
+        } else {
+            builder.append(String.format(formatString, "Thursday",
+                    this.thursday.startTimeString(),
+                    this.thursday.endTimeString()));
+        }
+        builder.append(System.lineSeparator());
+
+        if (this.friday == null) {
+            builder.append(String.format(formatString, "Friday",
+                    "Not scheduled", ""));
+        } else {
+            builder.append(String.format(formatString, "Friday",
+                    this.friday.startTimeString(),
+                    this.friday.endTimeString()));
+        }
+
+        return builder.toString();
     }
 
     /**
      * Description: Generates and returns a string representation of this
      * TimeTable. The returned string is of the basic form:
-     *    M TIME-TIME | T TIME-TIME | W TIME-TIME | R TIME-TIME | F TIME-TIME
+     * <br><pre>   M TIME-TIME | T TIME-TIME | W TIME-TIME | R TIME-TIME | F TIME-TIME</pre>
      * With a few exceptions. Days on which there is no scheduled time are
      * omitted. Days with identical times are collapsed. In this example, there
      * is no scheduled time for Thursday, Monday and Tuesday have the same
      * scheduled time, and Wednesday and Friday have the same scheduled time:
-     *    MT TIME-TIME | WF TIME-TIME
-     * Note lastly that the pipe is omitted if there is only one block in the
-     * string, for example:
-     *    MTR TIME-TIME
+     * <br><pre>   MT TIME-TIME | WF TIME-TIME</pre> Note lastly that the pipe is
+     * omitted if there is only one block in the string, for example:
+     * <br><pre>   MTR TIME-TIME</pre>
      *
      * @return a string representation of the TimeTable object
      */
@@ -194,8 +252,9 @@ public final class TimeTable {
 
         TimeTable testTable = new TimeTable(null, tuesday, wednesday,
                 thursday, null);
-        
+
         System.out.println(testTable.toString());
+        System.out.println(testTable.fullTimeTableString());
 
     }
 
