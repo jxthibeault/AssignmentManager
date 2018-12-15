@@ -104,13 +104,24 @@ public class Assignment implements Comparable<Assignment> {
     }
 
     /**
+     * Description: Compares this Assignment object with the specified
+     * Assignment object for order. Returns a negative integer, zero, or a
+     * positive integer as this Assignment's ID is before, the same as, or
+     * after the specified Assignment's ID, based on natural numeric ordering.
+     * Leading zeroes, if any, are omitted from comparison.
      *
-     * @param that
-     * @return
+     * @param that the Assignment to compare this Assignment to
+     * @return negative integer, zero, or positive integer
      */
     @Override
     public int compareTo(Assignment that) {
-        return 0;
+        if (this.assignmentID < that.getAssignmentID()) {
+            return -1;
+        } else if (this.assignmentID > that.getAssignmentID()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     /**
