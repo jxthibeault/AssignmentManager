@@ -181,13 +181,39 @@ public class Course implements Comparable<Course> {
     }
 
     /**
+     * Description: Compares this Course object with the specified
+     * Course object for order. Returns a negative integer, zero, or a
+     * positive integer as this Course's course code is before, the same as, or
+     * after the specified Course's course code, alphabetically. Casing of codes is
+     * ignored when making these comparisons.
      *
-     * @param that
-     * @return
+     * @param that the Course to compare this Course to
+     * @return negative integer, zero, or positive integer
      */
     @Override
     public int compareTo(Course that) {
+        String thatCode = that.getCourseCode().toLowerCase();
+        String thisCode = this.courseCode.toLowerCase();
+
+        int shorterNameLength;
+
+        if (thatCode.length() < thisCode.length()) {
+            shorterNameLength = thatCode.length();
+        } else {
+            shorterNameLength = thisCode.length();
+        }
+
+        for (int i = 0; i < shorterNameLength; i++) {
+            if (thisCode.toCharArray()[i] < thatCode.toCharArray()[i]) {
+                return -1;
+            } else if (thisCode.toCharArray()[i]
+                    > thatCode.toCharArray()[i]) {
+                return 1;
+            }
+        }
+
         return 0;
+
     }
 
     /**
@@ -217,7 +243,6 @@ public class Course implements Comparable<Course> {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TimeSpan monday = new TimeSpan(9, 30, 10, 30);
         TimeSpan tuesday = new TimeSpan(6, 30, 10, 30);
         TimeSpan wednesday = new TimeSpan(9, 45, 10, 30);
         TimeSpan thursday = new TimeSpan(6, 30, 10, 30);
