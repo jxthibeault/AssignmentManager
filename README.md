@@ -1,5 +1,7 @@
 # AssignmentManager
 
+### This project is abandoned. To contribute further to this project, please create a fork.
+
 AssignmentManager is a solution to keeping track of college courses, assignments, due dates, and instructors.
 
 ## Installation
